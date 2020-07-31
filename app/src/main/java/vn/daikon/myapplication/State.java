@@ -22,27 +22,33 @@ public class State {
     }
     public NhanVien nhanVien;
     private NhanVienRepo nhanVienRepo;
-    public ArrayList<NhanVien> list;
 
-    public void setList(){
-        list = (ArrayList<NhanVien>) nhanVienRepo.getAllNhanVien();
-        Log.d("dm", Integer.toString(list.size()));
-    }
+
+
+
     public boolean login(String user, String pass){
         NhanVien nhanVien = nhanVienRepo.getNhanVien(user);
         if (nhanVien != null && nhanVien.password.equals(pass))
-        return true;
+        {
+            state.nhanVien = nhanVien;
+            return true;
+        }
         else return false;
     }
     public void createNhanVien(NhanVien nhanVien){
         NhanVien nhanVien2 = nhanVienRepo.getNhanVien(nhanVien.user);
         if (nhanVien2 == null) {
             nhanVienRepo.addNhanVien(nhanVien);
-            list.add(nhanVien);
         }
     }
     public void updateNhanVien(NhanVien nhanVien){
-        nhanVienRepo.updateNhanVien(nhanVien);
-        setList();
+        NhanVien nhanVien2 = nhanVienRepo.getNhanVien(nhanVien.user);
+
+        if (nhanVien2 != null) {
+            nhanVienRepo.updateNhanVien(nhanVien);
+            state.nhanVien = nhanVien;
+
+        }
     }
+
 }

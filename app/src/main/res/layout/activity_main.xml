@@ -23,8 +23,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="36dp"
-        android:onClick="onClick"
+        android:onClick="onClick1"
         android:text="Dang nhap"
     />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="36dp"
+        android:onClick="onClick2"
+        android:text="Dang Ky"
+        />
+
 
 </LinearLayout>

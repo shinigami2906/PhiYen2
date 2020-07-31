@@ -9,6 +9,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
 
 import vn.daikon.myapplication.model.NhanVien;
 
@@ -48,6 +57,18 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
     private void cmsn(){
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(state.nhanVien.namSinh);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date date1 = new Date();
+
+        if (date.getDate() == date1.getDate() && date.getMonth() == date1.getMonth()){
+            ((TextView) findViewById(R.id.cmsn)).setText("cmsn");
+
+        }
 
     }
     void updateView(){
